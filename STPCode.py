@@ -25,7 +25,7 @@ final = dict()
 
 def NextNode(placenode):
     temp = dict()
-    if placenode not in STACK:
+    if placenode not in STACK and len(STACK) != (len(Places)):
         STACK.append(placenode)
         if len(STACK) != (len(Places)):
             for j in range(len(Places)):
@@ -33,14 +33,14 @@ def NextNode(placenode):
                     temp[Places[j]]= calc_dist(placenode,Places[j])
             temp1 = min(temp, key=lambda k: temp[k])
             final[placenode]= temp1
-            print(final)
-            print(STACK)
+            # print(final)
+            # print(STACK)
             NextNode(temp1)
         else:
-            # STACK.append(placenode)
             final[placenode] = Places[0]
-            return final
+    return final,STACK
 
 
-route = NextNode(Places[0])
-print(route)
+route1,route2 = NextNode(Places[0])
+print(route1)
+print(route2)
