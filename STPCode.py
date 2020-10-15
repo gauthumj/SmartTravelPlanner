@@ -1,5 +1,9 @@
 import requests
-
+'''
+python file containing function to find distance between two places(calc_dist())
+and function to find route with the shortest paths(NextNode())
+***uncomment the lines to run sample***
+'''
 def calc_dist(place1,place2):
     url = 'https://www.distance24.org/route.json?stops='+place1+'|'+place2
     req=requests.get(url)
@@ -11,19 +15,10 @@ def calc_dist(place1,place2):
     return dist
 
 
-# class CustomDictionary():
-#     def __init__(self):
-#         self.type = dict()  # datatype
-#
-#     def add(self, key, value):  # method to append
-#         self[key] = value
-
-
-Places = ['chennai','mumbai','goa','delhi','kolkata']  # temporary values
 STACK = []
 final = dict()
 
-def NextNode(placenode):
+def NextNode(placenode,Places):
     temp = dict()
     if placenode not in STACK and len(STACK) != (len(Places)):
         STACK.append(placenode)
@@ -35,12 +30,12 @@ def NextNode(placenode):
             final[placenode]= temp1
             # print(final)
             # print(STACK)
-            NextNode(temp1)
+            NextNode(temp1,Places)
         else:
             final[placenode] = Places[0]
     return final,STACK
 
-
-route1,route2 = NextNode(Places[0])
-print(route1)
-print(route2)
+# Places = ['chennai','mumbai','goa','delhi','kolkata']  # temporary values
+# route1,route2 = NextNode(Places[0],Places)
+# # print(route1)
+# print(route2)
