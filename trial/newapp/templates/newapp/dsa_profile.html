@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Profile</title>
+ <link rel = "icon" href ="logoh.png" type = "image/x-icon"> 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+                <!-- Google Fonts -->
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+                <!-- Bootstrap core CSS -->
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+                <!-- Material Design Bootstrap -->
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+
+                <!-- JQuery -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <!-- Bootstrap tooltips -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+                <!-- Bootstrap core JavaScript -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+                <!-- MDB core JavaScript -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+<style>
+html,body,header,#intro-section
+{
+      height: 100%;
+      position:relative;
+}
+@media (max-width: 740px)
+{
+    html,body,header,#intro-section
+    {
+          height: 100vh;
+    }
+}
+
+   .bg{
+        background-image: url("https://3.bp.blogspot.com/-jjQhk7-L3Hc/Woq1rX-ip1I/AAAAAAAAAm8/lwhhBOPKSRoo8WQC-1St08F0ocZCsP_CwCLcBGAs/s1600/Publication2.jpg") ;
+	background-color:#3d0922;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+.bg1
+{
+background-color:#edb2ce;
+}
+
+h1 {
+  position: relative;
+  color: black;
+  text-align: center;
+}
+s
+
+.navbar_collapse
+{
+        background-color:snow;
+        min-height:32px !important;
+}
+.navbar
+{
+        height:100px !important;
+}
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important; height:30px;}
+.navbar:not(.navbar_collapse)
+{
+    background:#69c763  !important;
+}
+ @media (max-width: 991px)
+ {
+    .navbar:not(.navbar_collapse)
+    {
+        background: #9d92ad !important;
+    }
+}
+.bar-item
+{
+  padding:8px 16px;float:right;width:auto;border:none;display:block;
+  outline:0
+}
+.navbutton
+{
+  border:none;display:inline-block;padding:8px 16px;vertical-align:middle;
+  overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;
+  text-align:center;cursor:pointer;white-space:nowrap
+}
+.navbutton:hover
+{color:#000!important;background-color:snow!important}
+
+
+img{ max-width:100%;}
+
+input[type=submit] {
+  width: 30%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position:relative;
+  left:147px;
+}
+
+
+
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-color:#3d0922;">
+
+
+<section>
+<nav class="navbar navbar-expand-lg navbar-dark  bg-light scrolling-navbar" >
+                  <div class="container fluid">
+					{% load static %}
+                    <img src="{% static 'newapp/logo2.png' %}" alt="CSGO Howl" style="float:left";>
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="bar-item navbutton">
+                            <a class="nav-link black-text" href="{% url 'newapp:logout_user' %}" data-offset="90">Logout</a>
+                        </li>
+			<li class="bar-item navbutton">
+                            <a class="nav-link black-text" href="{% url 'newapp:main_page' %}" data-offset="90">Plan another trip</a>
+                        </li>
+                        
+                    </ul>
+
+		<div class="navbar-nav text-white">
+                 Welcome, {{user}} !
+                </div>	
+	
+                  </div>
+                  </div>
+</nav>
+</section>
+
+<section class="bg">
+<div class="container">
+<br><br>
+<div class="row">
+	<div class="col-lg-6 ">
+		<div class="card" style="width: 30rem; height: 34rem; background-color:#f6ff7a;">
+ 			<div class="card-body">
+    				<h3 class="card-title">History</h3><br>
+    				<h5 class="card-subtitle mb-2 text-muted">All the places you've visited before:</h5><br>
+    				<p class="card-text text-dark" >{{history}}</p>
+  			</div>
+		</div>
+	</div>
+
+        <div class="col-lg-6" style="position:relative; left:50px;">
+ 		<div class="card" style="width: 30rem; height: 34rem; background-color:#d9f58c;">
+ 			<div class="card-body">
+    				<h3 class="card-title">User Details</h3><br>
+					<div class="row">
+					<div class="col-lg-5 ">
+					<label class="size">Username:</label>
+					</div>
+					<div class="col-lg-7 ">
+					<p>{{user}}</p>
+					</div>
+					</div>
+					<br>
+					<div class="row">
+					<div class="col-lg-5 ">
+					<label class="size">Email:</label>
+					</div>
+					<div class="col-lg-7 ">
+					<p>{{user.email}}</p>
+					</div>
+					</div>
+					<br>
+
+				<form name="myForm" action="{% url 'newapp:profile_page' %}" method="post" class="form-group">
+					{% csrf_token %}
+					<div class="row form-group">
+					<div class="col-lg-5 ">
+					<label class="size" for="email">Enter old password:</label>
+					</div>
+					<div class="col-lg-7 ">
+					<input type="password" name="old_password" placeholder="Old password" class="form-control">
+					</div>
+					</div>
+					<br>
+					<div class="row">
+					<div class="col-lg-5 ">
+					<label class="size" for="password">Enter New Password:</label>
+					</div>
+					<div class="col-lg-7 ">
+					<input type="password" name="new_password1" placeholder="New password" class="form-control"/>
+					</div>
+					</div>
+					<br>
+					<div class="row">
+					<div class="col-lg-5 ">
+					<label class="size" for="password">Re-Enter New Password:</label>
+					</div>
+					<div class="col-lg-7 ">
+					<input type="password" name="new_password2" placeholder="New password" class="form-control"/>
+					</div>
+					</div>
+					{% for message in messages %}
+					<p id="messages" >{{message}}</p>
+					{% endfor %}
+					<br>
+					<input type="submit" value="Submit"/>
+				</form>
+  			</div>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+
+</body>
+</html>
