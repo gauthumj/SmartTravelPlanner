@@ -12,18 +12,6 @@ class UserInfo(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
 
-class MultiplestringField(forms.TypedMultipleChoiceField):
-    def __init__(self, *args, **kwargs):
-        super(MultiplestringField, self).__init__(*args, **kwargs)
-        self.coerce = str
 
-    def valid_value(self, value):
-        return True
-
-class UserTravelForm(forms.Form):
-    places = MultiplestringField()
-    class Meta:
-        model = UserTravel
-        fields = ['user','places']
 
 

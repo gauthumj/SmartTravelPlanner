@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Smart Travel Planner</title>
+ <link rel = "icon" href ="logoh.png" type = "image/x-icon"> 
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+                <!-- Google Fonts -->
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+                <!-- Bootstrap core CSS -->
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+                <!-- Material Design Bootstrap -->
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+
+                <!-- JQuery -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <!-- Bootstrap tooltips -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+                <!-- Bootstrap core JavaScript -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+                <!-- MDB core JavaScript -->
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+<style>
+html,body,header,#intro-section
+{
+      height: 100%;
+      position:relative;
+}
+@media (max-width: 740px)
+{
+    html,body,header,#intro-section
+    {
+          height: 100vh;
+    }
+}
+
+   .bg{
+        background-image: url("https://cdn.wallpapersafari.com/33/81/K5lRPn.jpg") ;
+	background-color:#3d0922;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+.bg1
+{
+background-color:#edb2ce;
+}
+
+h1 {
+  position: relative;
+  color: black;
+  text-align: center;
+}
+s
+
+.navbar_collapse
+{
+        background-color:snow;
+        min-height:32px !important;
+}
+.navbar
+{
+        height:100px !important;
+}
+.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important; height:30px;}
+.navbar:not(.navbar_collapse)
+{
+    background:#d65e96  !important;
+}
+ @media (max-width: 991px)
+ {
+    .navbar:not(.navbar_collapse)
+    {
+        background: #9d92ad !important;
+    }
+}
+.bar-item
+{
+  padding:8px 16px;float:right;width:auto;border:none;display:block;
+  outline:0
+}
+.navbutton
+{
+  border:none;display:inline-block;padding:8px 16px;vertical-align:middle;
+  overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;
+  text-align:center;cursor:pointer;white-space:nowrap
+}
+.navbutton:hover
+{color:#000!important;background-color:snow!important}
+
+
+img{ max-width:100%;}
+
+
+    .button1
+    {
+    	background-color:black;
+    	color:white;
+    	font-size: 16px; 
+	width:400px;
+	height:50px;
+	border: 2px solid black;
+    }
+
+	.button1:hover 
+	{
+  		background-color: #4CAF50;
+  		color: white;
+	}
+
+    .button2
+    {
+    	background-color:black;
+    	color:white;
+    	font-size: 16px; 
+	width:400px;
+	height:50px;
+	border: 2px solid black;
+    }
+
+.button2:hover
+ {
+  	background-color:#e34668;
+  	color:black;
+ }
+
+   .button3
+    {
+    	background-color:black;
+    	color:white;
+    	font-size: 16px; 
+	width:200px;
+	height:50px;
+	border: 2px solid black;
+    }
+
+.button3:hover
+ {
+  	background-color:red;
+  	color:white;
+ }
+   input
+    {
+      width:50%;
+      height:60%;
+      margin: 15px;
+      padding: 12px;
+      box-sizing: border-box;
+      resize:vertical;
+    }
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+  </script>
+  <script type="text/javascript">
+    var Places=Array();
+    $(function () {
+        $("#buttonAdd").bind("click", function () {
+            var div = $("<div />");
+            div.html(GenerateTextbox(""));
+            $("#TextBoxContainer").append(div);
+        });
+        $("#buttonGet").bind("click", function () {
+            $("input[name=CreateTextbox]").each(function () {
+                Places.push($(this).val());
+            });
+            document.getElementById("x").value=Places;
+        });
+        $("body").on("click", ".remove", function () {
+            $(this).closest("div").remove();
+        });
+    });
+    function GenerateTextbox(value) {
+        return '<input name = "CreateTextbox" type="text" placeholder="Enter a place" value = "' + value + '" /> ' +
+                '<input type="button" value="Remove place from trip" class="remove button3" />'
+    }
+    </script>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" style="background-color:#3d0922;">
+
+
+<section>
+<nav class="navbar navbar-expand-lg navbar-dark  bg-light scrolling-navbar" >
+                  <div class="container fluid">
+    {% load static %}
+		<img src="{% static 'newapp/logo2.png' %}" alt="CSGO Howl" style="float:left";>
+                 <!-- <a class="navbar-brand" style=color:black>Smart Travel Planner</a>-->
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="bar-item navbutton">
+                            <a class="nav-link black-text" href="{% url 'newapp:logout_user' %}"  data-offset="90">Logout</a>
+                        </li>
+                        <li class="bar-item navbutton">
+                            <a class="nav-link black-text" href="{% url 'newapp:profile_page' %}"  data-offset="90">View Profile</a>
+                        </li>
+                    </ul>
+                  <div class="navbar-nav text-white", style="font-size: large;color: rgb(6, 0, 85);">Welcome back, {{user}} !</div>
+                  </div>
+                  </div>
+</nav>
+</section>
+
+<section class="bg">
+<br><br>
+<div class="container bg1 py-3 view overlay rounded z-depth-3" style="width:50%; text-align:center;">
+<h2>Welcome to the destination page!</h2>
+  <div id="fit">
+	<input class="button2" id="buttonAdd" type="button" value="Click to add places to your travel plan!" />
+
+	 <div id="TextBoxContainer">
+	 </div>
+
+  	<form action="{% url 'newapp:main_page' %}" method="POST" class="form-group">
+      		{%csrf_token%}
+      		<br><input class="button1" style="width:200px;" id="buttonGet" type="submit" value="Formulate" class="form-control"/><br>
+      		<input id="x" name="x" type="hidden"/><br>
+    	</form>
+  </div>
+</div>
+</section>
+
+</body>
+</html>
