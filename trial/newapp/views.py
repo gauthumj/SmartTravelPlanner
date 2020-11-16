@@ -37,13 +37,17 @@ def signup(request):
         if form.is_valid():
             # username = request.POST.get('username')
             username = form.cleaned_data.get('username')
-            if User.objects.filter(username=username).exists:
-                messages.info(request, 'username is already in use !')
-                return redirect('newapp:signup')
-            else:
-                form.save()
-                login(request, form)
-                return redirect('newapp:main_page')
+            password = form.cleaned_data.get('password1')
+            # if User.objects.filter(username=username).exists:
+            #     messages.info(request, 'Username is already in use !')
+            #     return redirect('newapp:signup')
+            # else:
+            form.save()
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return redirect('newapp:main_page')
+        else:
+            messages.error(request,'Password failed security checks !')
 
     else:
         form = UserInfo()
@@ -120,7 +124,7 @@ def profile_page(request):
             return redirect('newapp:profile_page')
     else:
         history = UserTravel.objects.get(username=request.user.username).places
-        history = history[:len(history)-1]
+        history = history[:len(history)-1].split(',')
         form = PasswordChangeForm(request.user)
         context = {
             'history': history,

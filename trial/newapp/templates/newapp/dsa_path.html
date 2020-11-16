@@ -204,7 +204,27 @@ img{ max-width:100%;}
   		color: black;
 	}
 
-
+.b{
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Z76wZ2e9eVjFq-MKVkRdzDQFDLo0pnY8oQ&usqp=CAU');
+  width:320px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b1{
+  background: url('https://www.airmanagesuffolk.com/wp-content/uploads/2020/06/trivago_logo_new.png');
+  width:350px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b2{
+  background: url('https://lh3.googleusercontent.com/proxy/Eqvv-xix5mQZ6Qq0K4rknMLfXCKLHKMo4BJfNyCDmJURbwBtQoZscDJPT2g1K3ElctLCD1DDWqfTEyjKAYbyeOGTMJlWHMTMXZkV48MqsTqn_hC726ZvwKYaFynMcpGTXQtC_Mk1XyNh');
+  width:300px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
 
 </style>
 
@@ -237,14 +257,14 @@ img{ max-width:100%;}
         <div class="view" id="intro-section">
         <div class="bg" id="intro-section">
 	         <div class="container">
-		 	<div class="content text-center">
-		           	<h1>The Most Optimal Path to travel is:</h1><br>
+		 	<div class="content">
+		           	<h1 class="text-center">The Most Optimal Path to travel is:</h1><br>
 		             	<h3>
                             {% for key, value in route.items %}
-                            <li>{{ key }} &rarr; {{ value }}</li>
+                            <li style="position: relative; left: 70px;">{{ key }} &rarr; {{ value }}</li>
                             {% endfor %}
                         </h3><br>
-				<a href="{% url 'newapp:map_display'%}" class="button1">Click here to see the map</a>
+				<a href="{% url 'newapp:map_display'%}" target="_blank" class="button1" style="position: relative; left: 270px;" >Click here to see the map</a>
 			</div>
 	         </div>
 	       </div>
@@ -255,6 +275,7 @@ img{ max-width:100%;}
 <main>
     <section class="py-5">
         <div class="container">
+            <h2 class="font-weight-bold mb-5">Here's some more info !</h2>
             {%for i,j in info %}
                   <h4 style="text-transform: uppercase;">{{i}}</h4>
                         <p class="w3-large" style="font-family: Times New Roman, Georgia, Serif;">
@@ -268,6 +289,17 @@ img{ max-width:100%;}
         </div>
     </section>
 </main>
+
+<main>
+    <section class="py-5" style="background:#1d9cbf">
+      <center><h3> Book your rooms with the best hotel booking sites! </h3></center><br>
+        <div class="container">
+          <button class="b" style="margin-right: 30px" onclick="window.open('https://www.airbnb.co.in/?locale=en&_set_bev_on_new_domain=1605543646_Yjk5MTQ5ZWFmNTE0')"/>
+          <button class="b1" style="margin-right: 30px" onclick="window.open('https://www.trivago.in')"/>
+          <button class="b2" style="margin-right: 30px" onclick="window.open('https://www.hotelscombined.in/?ispredir=true')"/>
+        </div>
+    </section>
+  </main>
 
 </body>
 </html>
