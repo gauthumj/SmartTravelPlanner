@@ -196,6 +196,7 @@ img{ max-width:100%;}
 	height:100px;
 	border: 2px solid black;
 	border-radius: 15px;
+  padding: 10px;
     }
 
 	.button1:hover 
@@ -225,6 +226,40 @@ img{ max-width:100%;}
   background-repeat: no-repeat;
   background-size:cover;
 }
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #357e9c; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004099 ; 
+}
+
+hr {height:2px; border-width:0;color:gray;background-color:gray;}
+
+p:nth-child(even)
+ {background-color:#bbe6f2; 
+  color:black;
+   padding: 30px;
+  border-radius: 25px;
+  }
+
+p:nth-child(odd) 
+{background-color:#75bdbf; 
+  color:black;
+   padding: 30px;
+  border-radius: 25px;
+  }
 
 </style>
 
@@ -277,12 +312,13 @@ img{ max-width:100%;}
         <div class="container">
             <h2 class="font-weight-bold mb-5">Here's some more info !</h2>
             {%for i,j in info %}
-                  <h4 style="text-transform: uppercase;">{{i}}</h4>
+                  <h4 style="text-transform: uppercase;font-weight: bold;">{{i}}</h4>
                         <p class="w3-large" style="font-family: Times New Roman, Georgia, Serif;">
                             <!-- <br> -->
                                 {{j}}
-                            <br>
+                            <!-- <br> -->
                         </p>
+                        <hr>
                         {% endfor %}
                        </div>
             </div>

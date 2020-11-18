@@ -1,6 +1,7 @@
 import plotly.graph_objects as go
 from geopy import Nominatim
 import os
+from plotly.offline import plot
 
 lat1 = []
 lon1 = []
@@ -19,6 +20,8 @@ def coordlon(place):
 
 
 def get_map(Place):
+    lat1.clear()
+    lon1.clear()
     for i in Place:
         lat1.append(coordlat(i))
         lon1.append(coordlon(i))
@@ -40,8 +43,10 @@ def get_map(Place):
 
             'zoom': 2})
 
-    fig.write_html(
-        'C:/Users/ripti/Documents/PycharmProjects/new/trial/newapp/templates/newapp/display_map.html', include_plotlyjs='cdn')
+    # fig.write_html(
+    #     'C:/Users/ripti/Documents/PycharmProjects/new/trial/newapp/templates/newapp/display_map.html', include_plotlyjs='cdn')
+    map_plt = plot(fig,output_type='div',include_plotlyjs='cdn')
+    return map_plt
 
 # Place=['chennai','seoul','tokyo','delhi','kolkata','chennai']
-# get_map(Place)
+# print(get_map(Place))
