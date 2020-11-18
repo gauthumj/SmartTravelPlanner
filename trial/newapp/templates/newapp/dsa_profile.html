@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,6 +104,39 @@ input[type=submit] {
   left:147px;
 }
 
+.list-group {
+
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 10px;
+  height: 340px;
+  width: 400px;
+}
+
+.list-group-item {
+  height: min-content;
+  width:145px;
+  background-color:#edbc4c;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #e3663b; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
 
 
   </style>
@@ -143,8 +177,20 @@ input[type=submit] {
 		<div class="card" style="width: 30rem; height: 34rem; background-color:#f6ff7a;">
  			<div class="card-body">
     				<h3 class="card-title">History</h3><br>
-    				<h5 class="card-subtitle mb-2 text-muted">All the places you've visited before:</h5><br>
-    				<p class="card-text text-dark" >{{history}}</p>
+            <h5 class="card-subtitle mb-2 text-muted">All the places you've visited before:</h5><br>
+    				<h6 class="text-dark" >
+					<div class="container">
+					  <div class="row">
+					    <div class="col-4 mr-4">
+						<ul class="list-group d-flex flex-column flex-wrap">
+              {% for i in history%}
+              <li class="list-group-item">{{i}}</li>
+              {% endfor %}
+						</ul>
+					    </div>
+					  </div>
+					</div>
+        </h6>
   			</div>
 		</div>
 	</div>

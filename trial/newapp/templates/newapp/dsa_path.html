@@ -216,14 +216,73 @@ img{ max-width:100%;}
 	height:100px;padding: 14px 25px;
 	border: 2px solid black;
 	border-radius: 15px;
+  padding: 10px;
     }
 
-.button1:hover
-    {
-  	background-color:#21bf38;
-  	color: black;
-    }
 
+	.button1:hover 
+	{
+  		background-color:#21bf38;
+  		color: black;
+	}
+
+.b{
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Z76wZ2e9eVjFq-MKVkRdzDQFDLo0pnY8oQ&usqp=CAU');
+  width:320px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b1{
+  background: url('https://www.airmanagesuffolk.com/wp-content/uploads/2020/06/trivago_logo_new.png');
+  width:350px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b2{
+  background: url('https://lh3.googleusercontent.com/proxy/Eqvv-xix5mQZ6Qq0K4rknMLfXCKLHKMo4BJfNyCDmJURbwBtQoZscDJPT2g1K3ElctLCD1DDWqfTEyjKAYbyeOGTMJlWHMTMXZkV48MqsTqn_hC726ZvwKYaFynMcpGTXQtC_Mk1XyNh');
+  width:300px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #357e9c; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004099 ; 
+}
+
+
+
+hr {height:2px; border-width:0;color:gray;background-color:gray;}
+
+p:nth-child(even)
+ {background-color:#bbe6f2; 
+  color:black;
+   padding: 30px;
+  border-radius: 25px;
+  }
+
+p:nth-child(odd) 
+{background-color:#75bdbf; 
+  color:black;
+   padding: 30px;
+  border-radius: 25px;
+  }
 
 </style>
 
@@ -256,16 +315,16 @@ img{ max-width:100%;}
         <div class="view" id="intro-section">
         <div class="bg" id="intro-section">
 	         <div class="container">
-		 	<div class="content text-center">
-		           	<h1>The Most Optimal Path to travel is:</h1><br>
+		 	<div class="content">
+		           	<h1 class="text-center">The Most Optimal Path to travel is:</h1><br>
 		             	<h3>
                             {% for key, value in route.items %}
-                            <li>{{ key }} &rarr; {{ value }}</li>
+                            <li style="position: relative; left: 70px;">{{ key }} &rarr; {{ value }}</li>
                             {% endfor %}
                         </h3><br>
-				<a href="{% url 'newapp:map_display'%}" class="button1"> Click here to see the map </a>
-				<br><br><br>
-        			<h4>Scroll down to read more!</h4>
+
+				<a href="{% url 'newapp:map_display'%}" target="_blank" class="button1" style="position: relative; left: 270px;" >Click here to see the map</a>
+
 			</div>
 	         </div>
 	       </div>
@@ -276,28 +335,34 @@ img{ max-width:100%;}
 <main>
     <section class="py-5">
         <div class="container">
+            <h2 class="font-weight-bold mb-5">Here's some more info !</h2>
             {%for i,j in info %}
-                  <h4 style="text-transform: uppercase;">{{i}}</h4>
+                  <h4 style="text-transform: uppercase;font-weight: bold;">{{i}}</h4>
                         <p class="w3-large" style="font-family: Times New Roman, Georgia, Serif;">
                             <!-- <br> -->
                                 {{j}}
-                            <br>
+                            <!-- <br> -->
                         </p>
+                        <hr>
                         {% endfor %}
                        </div>
             </div>
         </div>
     </section>
 </main>
+
+
 <main>
-  <section class="py-5" style="background:#1d9cbf">
-    <center><h3> Book your rooms with the best hotel booking sites! </h3></center><br>
-      <div class="container">
-        <button class="b" style="margin-right: 30px" onclick="window.open('https://www.airbnb.co.in/?locale=en&_set_bev_on_new_domain=1605543646_Yjk5MTQ5ZWFmNTE0')"/>
-        <button class="b1" style="margin-right: 30px" onclick="window.open('https://www.trivago.in')"/>
-        <button class="b2" style="margin-right: 30px" onclick="window.open('https://www.hotelscombined.in/?ispredir=true')"/>
-      </div>
-  </section>
-</main>
+    <section class="py-5" style="background:#1d9cbf">
+      <center><h3> Book your rooms with the best hotel booking sites! </h3></center><br>
+        <div class="container">
+          <button class="b" style="margin-right: 30px" onclick="window.open('https://www.airbnb.co.in/?locale=en&_set_bev_on_new_domain=1605543646_Yjk5MTQ5ZWFmNTE0')"/>
+          <button class="b1" style="margin-right: 30px" onclick="window.open('https://www.trivago.in')"/>
+          <button class="b2" style="margin-right: 30px" onclick="window.open('https://www.hotelscombined.in/?ispredir=true')"/>
+        </div>
+    </section>
+  </main>
+
+
 </body>
 </html>

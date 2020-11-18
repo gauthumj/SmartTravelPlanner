@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,Http404,HttpResponse
 from django.contrib.auth import login, authenticate, logout, forms, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
@@ -37,13 +37,20 @@ def signup(request):
         if form.is_valid():
             # username = request.POST.get('username')
             username = form.cleaned_data.get('username')
-            if User.objects.filter(username=username).exists:
-                messages.info(request, 'username is already in use !')
-                return redirect('newapp:signup')
-            else:
-                form.save()
-                login(request, form)
-                return redirect('newapp:main_page')
+            password = form.cleaned_data.get('password1')
+            # if User.objects.filter(username=username).exists:
+            #     messages.info(request, 'Username is already in use !')
+            #     return redirect('newapp:signup')
+            # else:
+            form.save()
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            u = User.objects.get(username=username)
+            ut = UserTravel(user=u, username=u.username, places='')
+            ut.save()
+            return redirect('newapp:main_page')
+        else:
+            messages.error(request,'Password failed security checks !')
 
     else:
         form = UserInfo()
@@ -57,9 +64,7 @@ def main_page(request):
         text = str()
         global place_list
         text = request.POST.get('x')
-        # print(text)
         place_list = text.split(',')
-        # print(place_list)
         username = request.user.username
         if UserTravel.objects.filter(username=username).exists():
             temp = UserTravel.objects.get(username=username).places
@@ -85,11 +90,11 @@ def main_page(request):
 def display_page(request):
     final.clear()
     STACK.clear()
-    # print(place_list)
     global stack
+    global route
     route, stack = NextNode(place_list[0], place_list)
-    # print(route)
-    # print(stack)
+    print(route)
+    print(stack)
     PlaceInfo=[wikipedia.page(x+' place').summary for x in stack[:len(stack)-1]]
     info = zip(stack,PlaceInfo)
     form = {
@@ -101,8 +106,8 @@ def display_page(request):
 
 @login_required(login_url='newapp:login_page')
 def map_display(request):
-    get_map(stack)
-    return render(request, 'newapp/display_map.html')
+    map_plt = get_map(stack)
+    return render(request, 'newapp/display_map.html',{'map_plt': map_plt})
 
 
 @login_required(login_url='newapp:login_page')
@@ -120,7 +125,7 @@ def profile_page(request):
             return redirect('newapp:profile_page')
     else:
         history = UserTravel.objects.get(username=request.user.username).places
-        history = history[:len(history)-1]
+        history = history[:len(history)-1].split(',')
         form = PasswordChangeForm(request.user)
         context = {
             'history': history,
