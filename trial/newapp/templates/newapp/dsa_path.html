@@ -185,19 +185,40 @@ img{ max-width:100%;}
 .gallery_box .box_data{ position:absolute; top: 0; left: 0; right:0; bottom:0; color:#fff;}
 .gallery_box .box_data span{ position:absolute; top: 50%; transform: translateY(-50%); left:0 ; right:0; font-size:24px;}
 .gallery_box li:hover .box_data{ background:rgba(255,0,39,0.55)}
-
-
+	
+.b{
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Z76wZ2e9eVjFq-MKVkRdzDQFDLo0pnY8oQ&usqp=CAU');
+  width:320px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b1{
+  background: url('https://www.airmanagesuffolk.com/wp-content/uploads/2020/06/trivago_logo_new.png');
+  width:350px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.b2{
+  background: url('https://lh3.googleusercontent.com/proxy/Eqvv-xix5mQZ6Qq0K4rknMLfXCKLHKMo4BJfNyCDmJURbwBtQoZscDJPT2g1K3ElctLCD1DDWqfTEyjKAYbyeOGTMJlWHMTMXZkV48MqsTqn_hC726ZvwKYaFynMcpGTXQtC_Mk1XyNh');
+  width:300px;
+  height:150px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
 .button1
     {
     	background-color:#1d9cbf;
     	color:black;
-    	font-size: 16px; 
-	width:300px;
-	height:100px;
+    	font-size: 16px; font-weight: bold;
+	width:200px;
+	height:100px;padding: 14px 25px;
 	border: 2px solid black;
 	border-radius: 15px;
   padding: 10px;
     }
+
 
 	.button1:hover 
 	{
@@ -244,6 +265,8 @@ img{ max-width:100%;}
 ::-webkit-scrollbar-thumb:hover {
   background: #004099 ; 
 }
+
+
 
 hr {height:2px; border-width:0;color:gray;background-color:gray;}
 
@@ -299,7 +322,9 @@ p:nth-child(odd)
                             <li style="position: relative; left: 70px;">{{ key }} &rarr; {{ value }}</li>
                             {% endfor %}
                         </h3><br>
+
 				<a href="{% url 'newapp:map_display'%}" target="_blank" class="button1" style="position: relative; left: 270px;" >Click here to see the map</a>
+
 			</div>
 	         </div>
 	       </div>
@@ -326,6 +351,7 @@ p:nth-child(odd)
     </section>
 </main>
 
+
 <main>
     <section class="py-5" style="background:#1d9cbf">
       <center><h3> Book your rooms with the best hotel booking sites! </h3></center><br>
@@ -336,6 +362,7 @@ p:nth-child(odd)
         </div>
     </section>
   </main>
+
 
 </body>
 </html>
